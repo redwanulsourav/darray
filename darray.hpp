@@ -1,3 +1,8 @@
+#ifndef DARRAY
+#define DARRAY
+
+#include <cassert>
+
 template <class T>
 class darray {
     private: 
@@ -6,26 +11,26 @@ class darray {
     public:
         darray() {
             size = 0;
-            data = NULL;
+            data = nullptr;
         }
 
         darray(int _size) {
             size = _size;
-            data = new data[_size];
+            data = new T[_size];
         }
 
-        darray(const darray & arr) {
+        darray(const darray <T> & arr) {
             this -> size = arr.size;
-            data = new data[_size];
+            data = new T[this -> size];
             
-            for(int i = 0; i < _size; i++) {
+            for(int i = 0; i < this->size; i++) {
                 data[i] = arr.data[i];
             }
         }
 
         ~darray() {
             delete [] data;
-            data = NULL;
+            data = nullptr;
 
             size = 0;
         }
@@ -64,3 +69,5 @@ class darray {
             size = new_size;
         }
 };
+
+#endif
